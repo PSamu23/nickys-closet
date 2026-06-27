@@ -24,57 +24,43 @@ const carteras = [
     {
         id: 1,
         nombre: "Diana",
-        descripcion: "Cartera elegante con acabado en cuero genuino y detalles dorados. Perfecta para ocasiones especiales.",
+        descripcion: "Bolso Casual.",
         imagen: "images/cartera1.jpg",
         precio: "Consultar"
     },
     {
         id: 2,
         nombre: "Luna",
-        descripcion: "Bolso mediano con diseño minimalista y cierre magnético. Ideal para el día a día.",
+        descripcion: "Bolso Casual.",
         imagen: "images/cartera2.jpg",
         precio: "Consultar"
     },
     {
         id: 3,
         nombre: "Aurora",
-        descripcion: "Cartera de mano con estampado floral y asa removible. Elegancia en cada detalle.",
+        descripcion: "Bolso Casual.",
         imagen: "images/cartera3.jpg",
         precio: "Consultar"
     },
     {
         id: 4,
         nombre: "Valentina",
-        descripcion: "Mochila de cuero suave con múltiples compartimentos. Comodidad y estilo.",
+        descripcion: "Bolso Casual.",
         imagen: "images/cartera4.jpg",
         precio: "Consultar"
     },
     {
         id: 5,
         nombre: "Isabella",
-        descripcion: "Cartera cruzada con cadena dorada y acabado brillante. Tendencias modernas.",
-        imagen: "images/cartera5.jpg",
+        descripcion: "Bolso Casual.",
+        imagen: "images/cartera5.jpeg",
         precio: "Consultar"
     },
     {
         id: 6,
         nombre: "Sofía",
-        descripcion: "Bolso grande tipo shopper con diseño geométrico. Espaciosa y funcional.",
-        imagen: "images/cartera6.jpg",
-        precio: "Consultar"
-    },
-    {
-        id: 7,
-        nombre: "Camila",
-        descripcion: "Cartera acolchonada con asa top handle. Suave al tacto y muy elegante.",
-        imagen: "images/cartera7.jpg",
-        precio: "Consultar"
-    },
-    {
-        id: 8,
-        nombre: "Victoria",
-        descripcion: "Clutch con pedrería y cierre de broche. La pieza estrella para tus eventos.",
-        imagen: "images/cartera8.jpg",
+        descripcion: "Bolso Casual.",
+        imagen: "images/cartera6.jpeg",
         precio: "Consultar"
     }
 ];
