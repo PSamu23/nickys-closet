@@ -8,7 +8,7 @@
 // ============================================
 
 // Número de WhatsApp (con código de país, sin + ni espacios)
-const WHATSAPP_NUMBER = "50499999999"; // Cambia este número
+const WHATSAPP_NUMBER = "50487933297"; // Cambia este número
 
 // Mensaje base para WhatsApp
 const WHATSAPP_MESSAGE = "¡Hola! Me interesa esta cartera: ";
