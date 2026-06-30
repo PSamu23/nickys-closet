@@ -15,8 +15,32 @@ const carteras = [
     { id: 6, nombre: "Sofia", descripcion: "Bolso Casual.", imagen: "images/cartera6.jpeg", precio: "Consultar" }
 ];
 
-const perfumes = [    { id: 4, nombre: "Valentina", descripcion: "Bolso Casual.", imagen: "images/cartera4.jpg", precio: "Consultar" },
-    { id: 5, nombre: "Isabella", descripcion: "Bolso Casual.", imagen: "images/cartera5.jpeg", precio: "Consultar" },];
+const perfumes = [    
+    { id: 1, nombre: "MOONLIGHT", descripcion: "Ariana Grande", imagen: "images/losion1.jpeg", precio: "Consultar" },
+    { id: 2, nombre: "Prada", descripcion: "Loción.", imagen: "images/losion2.jpg", precio: "Consultar" },
+    { id: 3, nombre: "La vida es bella", descripcion: "Loción.", imagen: "images/losion3.jpg", precio: "Consultar" },
+    { id: 4, nombre: "Luna", descripcion: "Loción.", imagen: "images/losion4.jpg", precio: "Consultar" },
+    { id: 5, nombre: "Dior Savage", descripcion: "Loción.", imagen: "images/losion5.jpg", precio: "Consultar" },
+    { id: 6, nombre: "Invictus", descripcion: "Loción.", imagen: "images/losion6.jpg", precio: "Consultar" },
+    { id: 7, nombre: "Calvin Klein", descripcion: "Loción.", imagen: "images/losion7.jpg", precio: "Consultar" },
+    { id: 8, nombre: "212", descripcion: "Loción.", imagen: "images/losion8.jpg", precio: "Consultar" },
+    { id: 9, nombre: "Victorias Secrets", descripcion: "Loción.", imagen: "images/losion9.jpg", precio: "Consultar" },
+    { id: 10, nombre: "Victorias Secrets", descripcion: "Loción.", imagen: "images/losion10.jpg", precio: "Consultar" },
+    { id: 11, nombre: "Victorias Secrets", descripcion: "Loción.", imagen: "images/losion11.jpg", precio: "Consultar" },
+    { id: 12, nombre: "212 VIP", descripcion: "Loción.", imagen: "images/losion12.jpg", precio: "Consultar" },
+    { id: 13, nombre: "Luna", descripcion: "Loción.", imagen: "images/losion13.jpg", precio: "Consultar" },
+    { id: 14, nombre: "Luna", descripcion: "Loción.", imagen: "images/losion14.jpg", precio: "Consultar" },
+    { id: 15, nombre: "Luna", descripcion: "Loción.", imagen: "images/losion15.jpg", precio: "Consultar" },
+    { id: 16, nombre: "Luna", descripcion: "Loción.", imagen: "images/losion16.jpg", precio: "Consultar" },
+    { id: 17, nombre: "Luna", descripcion: "Loción.", imagen: "images/losion17.jpg", precio: "Consultar" },
+    { id: 18, nombre: "Cloude", descripcion: "Ariana Grande.", imagen: "images/losion18.jpg", precio: "Consultar" },
+    { id: 19, nombre: "Cloud SPLASRH", descripcion: "Ariana Grande.", imagen: "images/losion19.jpg", precio: "Consultar" },
+    { id: 20, nombre: "Candy", descripcion: "Ariana Grande.", imagen: "images/losion20.jpg", precio: "Consultar" },
+    
+
+
+];
+
 const skincare = [    { id: 4, nombre: "Valentina", descripcion: "Bolso Casual.", imagen: "images/cartera4.jpg", precio: "Consultar" },
     { id: 5, nombre: "Isabella", descripcion: "Bolso Casual.", imagen: "images/cartera5.jpeg", precio: "Consultar" },];
 const maquillaje = [    { id: 4, nombre: "Valentina", descripcion: "Bolso Casual.", imagen: "images/cartera4.jpg", precio: "Consultar" },
