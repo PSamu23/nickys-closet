@@ -1,218 +1,210 @@
 /* ============================================
-   COLI CARTERAS - JavaScript
-   Funcionalidad: Galería dinámica, Modal, WhatsApp
+   NICKYS CLOSET - JavaScript
+   Tabs, Galeria dinamica, Modal, WhatsApp
    ============================================ */
 
-// ============================================
-// CONFIGURACIÓN - ¡EDITA AQUÍ TUS CARTERAS!
-// ============================================
-
-// Número de WhatsApp (con código de país, sin + ni espacios)
-const WHATSAPP_NUMBER = "50487933297"; // Cambia este número
-
-// Mensaje base para WhatsApp
-const WHATSAPP_MESSAGE = "¡Hola! Me interesa esta cartera: ";
-
-// ============================================
-// LISTA DE CARTERAS (Array de objetos)
-// ============================================
-// Para agregar más carteras, solo añade más objetos a este array.
-// Las imágenes deben estar en la carpeta "images/" con formato .jpg o .webp
-// ============================================
+const WHATSAPP_NUMBER = "50487933297";
+const WHATSAPP_MESSAGE = "!Hola! Me interesa este producto: ";
 
 const carteras = [
-    {
-        id: 1,
-        nombre: "Diana",
-        descripcion: "Bolso Casual.",
-        imagen: "images/cartera1.jpg",
-        precio: "Consultar"
-    },
-    {
-        id: 2,
-        nombre: "Luna",
-        descripcion: "Bolso Casual.",
-        imagen: "images/cartera2.jpg",
-        precio: "Consultar"
-    },
-    {
-        id: 3,
-        nombre: "Aurora",
-        descripcion: "Bolso Casual.",
-        imagen: "images/cartera3.jpg",
-        precio: "Consultar"
-    },
-    {
-        id: 4,
-        nombre: "Valentina",
-        descripcion: "Bolso Casual.",
-        imagen: "images/cartera4.jpg",
-        precio: "Consultar"
-    },
-    {
-        id: 5,
-        nombre: "Isabella",
-        descripcion: "Bolso Casual.",
-        imagen: "images/cartera5.jpeg",
-        precio: "Consultar"
-    },
-    {
-        id: 6,
-        nombre: "Sofía",
-        descripcion: "Bolso Casual.",
-        imagen: "images/cartera6.jpeg",
-        precio: "Consultar"
-    }
+    { id: 1, nombre: "Diana", descripcion: "Bolso Casual.", imagen: "images/cartera1.jpg", precio: "Consultar" },
+    { id: 2, nombre: "Luna", descripcion: "Bolso Casual.", imagen: "images/cartera2.jpg", precio: "Consultar" },
+    { id: 3, nombre: "Aurora", descripcion: "Bolso Casual.", imagen: "images/cartera3.jpg", precio: "Consultar" },
+    { id: 4, nombre: "Valentina", descripcion: "Bolso Casual.", imagen: "images/cartera4.jpg", precio: "Consultar" },
+    { id: 5, nombre: "Isabella", descripcion: "Bolso Casual.", imagen: "images/cartera5.jpeg", precio: "Consultar" },
+    { id: 6, nombre: "Sofia", descripcion: "Bolso Casual.", imagen: "images/cartera6.jpeg", precio: "Consultar" }
 ];
 
-// ============================================
-// FUNCIÓN PARA GENERAR LAS TARJETAS (usando forEach)
-// ============================================
+const perfumes = [    { id: 4, nombre: "Valentina", descripcion: "Bolso Casual.", imagen: "images/cartera4.jpg", precio: "Consultar" },
+    { id: 5, nombre: "Isabella", descripcion: "Bolso Casual.", imagen: "images/cartera5.jpeg", precio: "Consultar" },];
+const skincare = [    { id: 4, nombre: "Valentina", descripcion: "Bolso Casual.", imagen: "images/cartera4.jpg", precio: "Consultar" },
+    { id: 5, nombre: "Isabella", descripcion: "Bolso Casual.", imagen: "images/cartera5.jpeg", precio: "Consultar" },];
+const maquillaje = [    { id: 4, nombre: "Valentina", descripcion: "Bolso Casual.", imagen: "images/cartera4.jpg", precio: "Consultar" },
+    { id: 5, nombre: "Isabella", descripcion: "Bolso Casual.", imagen: "images/cartera5.jpeg", precio: "Consultar" },];
 
-function renderizarCarteras() {
-    const galleryGrid = document.getElementById('galleryGrid');
-    
-    // Limpiar el grid
-    galleryGrid.innerHTML = '';
+const categoriasConfig = {
+    carteras: { data: carteras, titulo: 'Nuestra <span class="highlight">Coleccion</span>', icono: "fa-gem", sub: "Toca cualquier cartera para ver mas detalles" },
+    perfumes: { data: perfumes, titulo: 'Nuestros <span class="highlight">Perfumes</span>', icono: "fa-spray-can-sparkles", sub: "Toca cualquier perfume para ver mas detalles" },
+    skincare: { data: skincare, titulo: 'Nuestro <span class="highlight">Skincare</span>', icono: "fa-hand-sparkles", sub: "Toca cualquier producto para ver mas detalles" },
+    maquillaje: { data: maquillaje, titulo: 'Nuestro <span class="highlight">Maquillaje</span>', icono: "fa-paint-brush", sub: "Toca cualquier producto para ver mas detalles" }
+};
 
-    // Usando forEach para recorrer el array de carteras
-    carteras.forEach(function(cartera, index) {
-        // Crear el elemento de la tarjeta
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.setAttribute('data-id', cartera.id);
-        
-        // Agregar un pequeño retraso en la animación de entrada
-        card.style.animationDelay = (index * 0.1) + 's';
-
-        // Construir el HTML interno de la tarjeta
-        card.innerHTML = `
-            <div class="card-image-wrapper">
-                <img 
-                    src="${cartera.imagen}" 
-                    alt="${cartera.nombre}" 
-                    loading="lazy"
-                    onerror="this.src='https://via.placeholder.com/400x533/f5f0eb/d4a574?text=${encodeURIComponent(cartera.nombre)}'"
-                >
-                <div class="card-glass"></div>
-            </div>
-            <div class="card-overlay">
-                <h3>${cartera.nombre}</h3>
-                <p>${cartera.precio}</p>
-            </div>
-        `;
-
-        // Agregar evento click para abrir el modal
-        card.addEventListener('click', function() {
-            abrirModal(cartera);
-        });
-
-        // Agregar la tarjeta al grid
-        galleryGrid.appendChild(card);
+function renderizarGaleria(array) {
+    const grid = document.getElementById('galleryGrid');
+    if (!grid) return;
+    grid.innerHTML = "";
+    if (!array || array.length === 0) {
+        grid.innerHTML = '<div class="empty-msg"><i class="fas fa-box-open"></i><p>Proximamente...</p></div>';
+        return;
+    }
+    array.forEach(function(item, index) {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.setAttribute("data-id", item.id);
+        card.style.animationDelay = (index * 0.1) + "s";
+        card.innerHTML = '<div class="card-image-wrapper">' +
+            '<img src="' + item.imagen + '" alt="' + item.nombre + '" loading="lazy"' +
+            ' onerror="this.src=&#39;https://via.placeholder.com/400x533/f5f0eb/d4a574?text=' + encodeURIComponent(item.nombre) + '&#39;">' +
+            '<div class="card-glass"></div></div>' +
+            '<div class="card-overlay"><h3>' + item.nombre + '</h3><p>' + item.precio + '</p></div>';
+        card.addEventListener("click", function() { abrirModal(item); });
+        grid.appendChild(card);
     });
 }
 
-// ============================================
-// FUNCIÓN PARA ABRIR EL MODAL
-// ============================================
-
-function abrirModal(cartera) {
-    const modalOverlay = document.getElementById('modalOverlay');
-    const modalImage = document.getElementById('modalImage');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDescription = document.getElementById('modalDescription');
-    const whatsappLink = document.getElementById('whatsappLink');
-
-    // Actualizar contenido del modal
-    modalImage.src = cartera.imagen;
-    modalImage.alt = cartera.nombre;
-    modalTitle.textContent = cartera.nombre;
-    modalDescription.textContent = cartera.descripcion;
-
-    // Generar enlace de WhatsApp con el nombre de la cartera
-    const mensaje = encodeURIComponent(WHATSAPP_MESSAGE + cartera.nombre + " - " + window.location.href);
-    whatsappLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensaje}`;
-
-    // Mostrar el modal
-    modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
+function cambiarCategoria(categoria) {
+    document.querySelectorAll(".categoria-card").forEach(function(btn) {
+        btn.classList.remove("active");
+    });
+    var btnActivo = document.querySelector('[data-categoria="' + categoria + '"]');
+    if (btnActivo) btnActivo.classList.add("active");
+    var config = categoriasConfig[categoria];
+    if (!config) return;
+    document.getElementById("categoriaTitulo").innerHTML = config.titulo;
+    document.getElementById("categoriaIcono").className = "fas " + config.icono;
+    document.getElementById("categoriaSub").textContent = config.sub;
+    renderizarGaleria(config.data);
 }
 
-// ============================================
-// FUNCIÓN PARA CERRAR EL MODAL
-// ============================================
+function abrirModal(producto) {
+    document.getElementById("modalImage").src = producto.imagen;
+    document.getElementById("modalImage").alt = producto.nombre;
+    document.getElementById("modalTitle").textContent = producto.nombre;
+    document.getElementById("modalDescription").textContent = producto.descripcion;
+    var msg = encodeURIComponent(WHATSAPP_MESSAGE + producto.nombre + " - " + window.location.href);
+    document.getElementById("whatsappLink").href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + msg;
+    document.getElementById("modalOverlay").classList.add("active");
+    document.body.style.overflow = "hidden";
+}
 
 function cerrarModal() {
-    const modalOverlay = document.getElementById('modalOverlay');
-    modalOverlay.classList.remove('active');
-    document.body.style.overflow = '';
+    document.getElementById("modalOverlay").classList.remove("active");
+    document.body.style.overflow = "";
 }
 
-// ============================================
-// EVENT LISTENERS
-// ============================================
-
-// Cerrar modal con el botón X
-document.getElementById('modalClose').addEventListener('click', cerrarModal);
-
-// Cerrar modal haciendo clic fuera del contenido
-document.getElementById('modalOverlay').addEventListener('click', function(e) {
-    if (e.target === this) {
-        cerrarModal();
-    }
+document.getElementById("modalClose").addEventListener("click", cerrarModal);
+document.getElementById("modalOverlay").addEventListener("click", function(e) {
+    if (e.target === this) cerrarModal();
+});
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") cerrarModal();
 });
 
-// Cerrar modal con la tecla ESC
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        cerrarModal();
-    }
-});
-
-// ============================================
-// INICIALIZAR LA GALERÍA
-// ============================================
-
-// Esperar a que el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-    renderizarCarteras();
-    
-    // Animación de entrada para las tarjetas
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(function(card, index) {
-        setTimeout(function() {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, 100 + (index * 80));
+document.querySelectorAll(".categoria-card").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+        cambiarCategoria(this.getAttribute("data-categoria"));
     });
 });
 
-// Agregar estilos de animación de entrada dinámicamente
-const styleAnimacion = document.createElement('style');
-styleAnimacion.textContent = `
-    .card {
-        opacity: 0;
-        transform: translateY(30px);
-        animation: fadeInUp 0.5s ease forwards;
+/* === AUTO SCROLL DE CATEGORÍAS === */
+function initAutoScrollCategorias() {
+    var grid = document.getElementById("categoriasGrid");
+    if (!grid) return;
+
+    var isPaused = false;
+    var direction = 1;
+    var animId = null;
+    var scrollTimeout = null;
+    var speed = 0.5;
+
+    // Solo activar en móvil (con scroll horizontal)
+    var isMobile = window.matchMedia("(max-width: 767px)");
+    if (!isMobile.matches) {
+        // En desktop: animación float sutil en cada tarjeta
+        document.querySelectorAll(".categoria-card").forEach(function(card) {
+            card.style.animation = "categoriaFloat 3s ease-in-out infinite";
+        });
+        return;
     }
-    
-    @keyframes fadeInUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
+
+    function step() {
+        if (!isPaused) {
+            var maxScroll = grid.scrollWidth - grid.clientWidth;
+            if (maxScroll <= 0) {
+                animId = requestAnimationFrame(step);
+                return;
+            }
+
+            if (direction === 1) {
+                grid.scrollLeft += speed;
+                if (grid.scrollLeft >= maxScroll - 2) {
+                    direction = -1;
+                }
+            } else {
+                grid.scrollLeft -= speed;
+                if (grid.scrollLeft <= 2) {
+                    direction = 1;
+                }
+            }
         }
+        animId = requestAnimationFrame(step);
     }
-`;
-document.head.appendChild(styleAnimacion);
 
-// ============================================
-// FUNCIÓN EXTRA: Scroll suave para el botón "Ver Colección"
-// ============================================
+    // Pausar al interactuar, reanudar después de 2.5s
+    function handlePause() {
+        isPaused = true;
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+    }
+    function handleResume() {
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(function() {
+            isPaused = false;
+        }, 2500);
+    }
 
-document.querySelector('.btn-primary')?.addEventListener('click', function(e) {
+    grid.addEventListener("mouseenter", handlePause);
+    grid.addEventListener("mouseleave", handleResume);
+    grid.addEventListener("touchstart", handlePause);
+    grid.addEventListener("touchend", handleResume);
+
+    // Pausar también cuando el usuario hace scroll manual
+    grid.addEventListener("scroll", function() {
+        isPaused = true;
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(function() {
+            isPaused = false;
+        }, 2500);
+    });
+
+    // Reaccionar al cambio de tamaño de pantalla
+    isMobile.addEventListener("change", function(e) {
+        if (e.matches) {
+            // Vuelve a móvil - reiniciar animación
+            if (animId) cancelAnimationFrame(animId);
+            document.querySelectorAll(".categoria-card").forEach(function(card) {
+                card.style.animation = "";
+            });
+            direction = 1;
+            isPaused = false;
+            animId = requestAnimationFrame(step);
+        } else {
+            // Cambia a desktop - detener scroll y aplicar float
+            if (animId) cancelAnimationFrame(animId);
+            document.querySelectorAll(".categoria-card").forEach(function(card) {
+                card.style.animation = "categoriaFloat 3s ease-in-out infinite";
+            });
+        }
+    });
+
+    animId = requestAnimationFrame(step);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    cambiarCategoria("carteras");
+    initAutoScrollCategorias();
+});
+
+var styleAnim = document.createElement("style");
+styleAnim.textContent = ".card { opacity: 0; transform: translateY(30px); animation: fadeInUp 0.5s ease forwards; }";
+styleAnim.textContent += " @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }";
+styleAnim.textContent += " .empty-msg { text-align: center; padding: 3rem 1rem; color: #8a8a8a; }";
+styleAnim.textContent += " .empty-msg i { font-size: 3rem; margin-bottom: 1rem; color: #e8c9a8; }";
+styleAnim.textContent += " .empty-msg p { font-family: 'Playfair Display', serif; font-size: 1.2rem; }";
+styleAnim.textContent += " @keyframes categoriaFloat { 0%,100%{ transform: translateY(0px); } 50%{ transform: translateY(-4px); } }";
+document.head.appendChild(styleAnim);
+
+document.querySelector(".btn-primary")?.addEventListener("click", function(e) {
     e.preventDefault();
-    const target = document.querySelector('#galeria');
-    if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-    }
+    var target = document.querySelector("#categorias");
+    if (target) target.scrollIntoView({ behavior: "smooth" });
 });

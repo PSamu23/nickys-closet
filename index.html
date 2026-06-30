@@ -11,17 +11,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <!-- Header / Hero -->
     <header class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="logo">
                 <h1>Nickys</h1>
-                <span class="logo-sub">Carteras</span>
+                <span class="logo-sub">Collectios</span>
             </div>
             <p class="hero-tagline">Elegancia que llevas contigo</p>
-            <p class="hero-desc">Descubre nuestra colección exclusiva de carteras diseñadas para la mujer moderna</p>
-            <a href="#galeria" class="btn-primary">Ver Colección <i class="fas fa-arrow-down"></i></a>
+            <p class="hero-desc">Descubre nuestra colecci&oacute;n exclusiva de carteras, perfumes, skincare y maquillaje para la mujer moderna</p>
+            <a href="#categorias" class="btn-primary">Ver Colecci&oacute;n <i class="fas fa-arrow-down"></i></a>
         </div>
         <div class="hero-decorative">
             <div class="circle c1"></div>
@@ -30,53 +29,80 @@
         </div>
     </header>
 
-    <!-- Galería de Carteras -->
-    <section id="galeria" class="galeria">
+    <section id="categorias" class="categorias">
         <div class="section-header">
-            <h2>Nuestra <span class="highlight">Colección</span></h2>
+            <h2>Nuestras <span class="highlight">Categor&iacute;as</span></h2>
             <div class="divider">
                 <span class="divider-line"></span>
-                <i class="fas fa-gem"></i>
+                <i class="fas fa-star"></i>
                 <span class="divider-line"></span>
             </div>
-            <p class="section-sub">Toca cualquier cartera para ver más detalles</p>
+            <p class="section-sub">Explora nuestra colecci&oacute;n</p>
         </div>
-
-        <div class="gallery-grid" id="galleryGrid">
-            <!-- Las carteras se cargarán dinámicamente con JS -->
+        <div class="categorias-grid" id="categoriasGrid">
+            <button class="categoria-card active" data-categoria="carteras">
+                <div class="categoria-icon"><i class="fas fa-bag-shopping"></i></div>
+                <h3>Carteras</h3>
+                <p>Elegancia en cada detalle</p>
+            </button>
+            <button class="categoria-card" data-categoria="perfumes">
+                <div class="categoria-icon"><i class="fas fa-spray-can-sparkles"></i></div>
+                <h3>Perfumes</h3>
+                <p>Fragancias que enamoran</p>
+            </button>
+            <button class="categoria-card" data-categoria="skincare">
+                <div class="categoria-icon"><i class="fas fa-hand-sparkles"></i></div>
+                <h3>Skincare</h3>
+                <p>Cuida tu piel</p>
+            </button>
+            <button class="categoria-card" data-categoria="maquillaje">
+                <div class="categoria-icon"><i class="fas fa-paint-brush"></i></div>
+                <h3>Maquillaje</h3>
+                <p>Realza tu belleza</p>
+            </button>
         </div>
     </section>
 
-    <!-- Modal de Detalle -->
+    <section id="galeria" class="galeria">
+        <div class="section-header">
+            <h2 id="categoriaTitulo">Nuestra <span class="highlight">Colecci&oacute;n</span></h2>
+            <div class="divider">
+                <span class="divider-line"></span>
+                <i class="fas fa-gem" id="categoriaIcono"></i>
+                <span class="divider-line"></span>
+            </div>
+            <p class="section-sub" id="categoriaSub">Toca cualquier producto para ver m&aacute;s detalles</p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-content">
             <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
             <div class="modal-image-container">
-                <img id="modalImage" src="" alt="Cartera">
+                <img id="modalImage" src="" alt="Producto">
                 <div class="modal-glass-effect"></div>
             </div>
             <div class="modal-info">
-                <h3 id="modalTitle">Nombre de la Cartera</h3>
-                <p id="modalDescription">Descripción de la cartera</p>
+                <h3 id="modalTitle">Nombre del Producto</h3>
+                <p id="modalDescription">Descripci&oacute;n del producto</p>
                 <div class="modal-actions">
                     <a id="whatsappLink" href="#" target="_blank" class="btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                        <i class="fab fa-whatsapp"></i> Consultar
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">
                 <h3>Nickys Closet</h3>
-                <p>Elegancia y estilo para la mujer contemporánea</p>
+                <p>Elegancia y estilo para la mujer contempor&aacute;nea</p>
             </div>
             <div class="footer-social">
                 <a href="https://www.instagram.com/boutiquenickys/?hl=es" class="social-icon"><i class="fab fa-instagram"></i></a>
-
             </div>
         </div>
         <div class="footer-bottom">
