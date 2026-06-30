@@ -24,9 +24,9 @@ const perfumes = [
     { id: 6, nombre: "Invictus", descripcion: "Loción.", imagen: "images/losion6.jpg", precio: "Consultar" },
     { id: 7, nombre: "Calvin Klein", descripcion: "Loción.", imagen: "images/losion7.jpg", precio: "Consultar" },
     { id: 8, nombre: "212", descripcion: "Loción.", imagen: "images/losion8.jpg", precio: "Consultar" },
-    { id: 9, nombre: "Victorias Secrets", descripcion: "Loción.", imagen: "images/losion9.jpg", precio: "Consultar" },
-    { id: 10, nombre: "Victorias Secrets", descripcion: "Loción.", imagen: "images/losion10.jpg", precio: "Consultar" },
-    { id: 11, nombre: "Victorias Secrets", descripcion: "Loción.", imagen: "images/losion11.jpg", precio: "Consultar" },
+    { id: 9, nombre: "Victorias Secrets Azul", descripcion: "Loción.", imagen: "images/losion9.jpg", precio: "Consultar" },
+    { id: 10, nombre: "Victorias Secrets Morada", descripcion: "Loción.", imagen: "images/losion10.jpg", precio: "Consultar" },
+    { id: 11, nombre: "Victorias Secrets Rosa", descripcion: "Loción.", imagen: "images/losion11.jpg", precio: "Consultar" },
     { id: 12, nombre: "212 VIP", descripcion: "Loción.", imagen: "images/losion12.jpg", precio: "Consultar" },
     { id: 13, nombre: "Good Girl-roja ", descripcion: "Loción.", imagen: "images/losion13.jpg", precio: "Consultar" },
     { id: 14, nombre: "Good Girl-negra", descripcion: "Loción.", imagen: "images/losion14.jpg", precio: "Consultar" },
@@ -41,10 +41,24 @@ const perfumes = [
 
 ];
 
-const skincare = [    { id: 4, nombre: "Valentina", descripcion: "Bolso Casual.", imagen: "images/cartera4.jpg", precio: "Consultar" },
-    { id: 5, nombre: "Isabella", descripcion: "Bolso Casual.", imagen: "images/cartera5.jpeg", precio: "Consultar" },];
-const maquillaje = [    { id: 4, nombre: "Valentina", descripcion: "Bolso Casual.", imagen: "images/cartera4.jpg", precio: "Consultar" },
-    { id: 5, nombre: "Isabella", descripcion: "Bolso Casual.", imagen: "images/cartera5.jpeg", precio: "Consultar" },];
+const skincare = [
+    { id: 1, nombre: "crema 345", descripcion: "Ariana Grande", imagen: "images/skincare1.jpg", precio: "Consultar" },
+    { id: 2, nombre: "Filtro-Solar", descripcion: "Centela", imagen: "images/skincare2.jpg", precio: "Consultar" },
+    { id: 3, nombre: "crema hidrantante", descripcion: "Neutrogena", imagen: "images/skincare3.jpg", precio: "Consultar" },
+    { id: 4, nombre: "set-bioqua", descripcion: "kit hidratante", imagen: "images/skincare4.jpg", precio: "Consultar" },
+    { id: 5, nombre: "parches", descripcion: "parches para agne", imagen: "images/skincare5.jpg", precio: "Consultar" },
+    { id: 6, nombre: "Exfoliante", descripcion: "Serum The ordinary", imagen: "images/skincare6.jpg", precio: "Consultar" },
+    { id: 7, nombre: "Acido hialuronico", descripcion: "Serum The ordinary", imagen: "images/skincare7.jpg", precio: "Consultar" },
+    { id: 8, nombre: "Cicaplast", descripcion: "Reparador de manchas", imagen: "images/skincare8.jpg", precio: "Consultar" },
+    { id: 9, nombre: "Jabon Facial", descripcion: "Cerave", imagen: "images/skincare9.jpg", precio: "Consultar" },
+    { id: 10, nombre: "creama hidratante", descripcion: "Purito", imagen: "images/skincare10.jpg", precio: "Consultar" },
+    { id: 11, nombre: "Masajeador facial", descripcion: "Facial", imagen: "images/skincare11.jpg", precio: "Consultar" },
+    { id: 12, nombre: "Cepillo Facial", descripcion: "Cepillo Facial", imagen: "images/skincare12.jpg", precio: "Consultar" },
+
+
+    
+];
+const maquillaje = [];
 
 const categoriasConfig = {
     carteras: { data: carteras, titulo: 'Nuestra <span class="highlight">Coleccion</span>', icono: "fa-gem", sub: "Toca cualquier cartera para ver mas detalles" },
